@@ -1,0 +1,45 @@
+package com.richfield.smartpantry;
+
+import java.util.Locale;
+
+/**
+ * Helper for the units the app supports. Quantities are converted to a common "base" so that
+ * 1 kg in the pantry satisfies a recipe that needs 500 g.
+ * Weight and volume share one base (1 ml is approximated as 1 g, like water); "piece" is counted separately.
+ */
+public final class Units {
+
+    public static final String[] ALL = {"g", "kg", "ml", "l", "tsp", "tbsp", "cup", "piece"};
+
+    private Units() { }
+
+    /** Converts a quantity in the given unit to the base unit (g/ml or pieces). */
+    public static double toBase(double quantity, String unit) {
+        switch (unit) {
+            case "kg":
+            case "l":
+                return quantity * 1000;
+            case "tsp":
+                return quantity * 5;
+            case "tbsp":
+                return quantity * 15;
+            case "cup":
+                return quantity * 240;
+            default: // g, ml, piece
+                return quantity;
+        }
+    }
+
+    /** "count" for whole items, "amount" for anything measured by weight or volume. */
+    public static String category(String unit) {
+        return "piece".equals(unit) ? "count" : "amount";
+    }
+
+    /** Prints 3.0 as "3" and 0.5 as "0.50". */
+    public static String formatQty(double q) {
+        if (q == Math.rint(q)) {
+            return String.valueOf((long) q);
+        }
+        return String.format(Locale.US, "%.2f", q);
+    }
+}
