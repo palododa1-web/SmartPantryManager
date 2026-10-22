@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.SmartPantry" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">#2E7D32</item>
+        <item name="colorPrimaryVariant">#1B5E20</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#FF8F00</item>
+        <item name="colorOnSecondary">#000000</item>
+    </style>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView android:id="@+id/textSummary" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:padding="8dp"
+                android:textSize="16sp" android:textStyle="bold" />
+
+            <TextView android:id="@+id/textEmpty" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:gravity="center"
+                android:padding="24dp" android:textSize="16sp"
+                android:text="No recipes match your pantry yet - add more ingredients."
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerStrict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView android:id="@+id/textAlmostHeader" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:padding="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Almost there (missing exactly 1 ingredient - NOT cookable yet)"
+                android:textColor="#E65100" android:textStyle="bold" android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAlmost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav"
+        xmlns:app="http://schemas.android.com/apk/res-auto" />
+</LinearLayout>
